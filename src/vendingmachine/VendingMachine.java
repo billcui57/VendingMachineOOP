@@ -10,7 +10,10 @@ package vendingmachine;
  * @author Fiona
  */
 public class VendingMachine {
-
+public String Snacks[];
+public int bank;
+public int moneyIn;
+public int[] snackQty;
     /**
      * @param args the command line arguments
      */
@@ -18,4 +21,20 @@ public class VendingMachine {
         // TODO code application logic here
     }
     
+public void VendingMachine(){
+    
+}
+public int returnChange(){
+   int x=0; 
+return x;
+}
+public void makeSelection(){
+    
+}
+public void insertMoney(){
+    
+}
+public void stockSnacks(Snack s, int qty){
+    
+}
 }

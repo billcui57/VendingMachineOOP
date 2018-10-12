@@ -10,7 +10,7 @@ package vendingmachine;
  * @author Fiona
  */
 public class VendingMachine {
-public String Snacks[];
+Snack[] snacks;
 public int bank;
 public int moneyIn;
 public int[] snackQty;
@@ -19,6 +19,7 @@ public int[] snackQty;
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
     }
     
 public void VendingMachine(){
@@ -32,9 +33,6 @@ public void makeSelection(){
     
 }
 public void insertMoney(){
-    
-}
-public void stockSnacks(Snack s, int qty){
-    
 }
 }
+

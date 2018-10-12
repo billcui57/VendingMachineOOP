@@ -10,16 +10,18 @@ package vendingmachine;
  * @author Fiona
  */
 public class VendingMachine {
-Snack[] snacks;
+Snack[] snacks = new Snack[10];
 public int bank;
 public int moneyIn;
 public int[] snackQty;
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public void main(String[] args) {
         // TODO code application logic here
-        
+        for(int i=0;i<snacks.length;i++){
+            snacks[i].g;
+        }
     }
     
 public void VendingMachine(){

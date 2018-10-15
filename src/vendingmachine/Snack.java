@@ -13,11 +13,26 @@ class Snack {
     private String name;
     private String description;
     private Double price;
+    private int amt;
     
-    public Snack(String newName,String newDes,Double newPrice){
+    public Snack(String newName,String newDes,Double newPrice,int newAmt){
         name= newName;
         description = newDes;
         price=newPrice;
+        amt=newAmt;
+    }
+    
+    
+    public int getAmt(){
+        return amt;
+    }
+    
+    public void addAmt(int add){
+        amt+=add;
+    }
+    
+    public void rmAmt(int rm){
+        amt-=rm;
     }
     
     

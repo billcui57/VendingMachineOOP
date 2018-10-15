@@ -5,11 +5,23 @@
  */
 package vendingmachine;
 
+import java.text.DecimalFormat;
+
 /**
  *
- * @author Fiona
+ * @author Fiona & Bill
  */
+
+
 public class Display {
+    DecimalFormat f = new DecimalFormat("#0.00");
+    
+    public void displaySnacks(){
+        
+    }
+    
+    
+    
     
 }
 

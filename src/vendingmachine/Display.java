@@ -9,14 +9,22 @@ import java.text.DecimalFormat;
 
 /**
  *
- * @author Fiona & Bill
+ * @author Adi Venkatesh
  */
 
 
 public class Display {
     DecimalFormat f = new DecimalFormat("#0.00");
+
+    public Display(String newName, String newDes, Double newPrice, int newAmt) {
+       
+    }
     
     public void displaySnacks(){
+        
+    }
+    
+    public void makeSelection(){
         
     }
     

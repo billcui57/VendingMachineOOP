@@ -20,25 +20,28 @@ public int[] snackQty;
     public void main(String[] args) {
         // TODO code application logic here
         for(int i=0;i<snacks.length;i++){
-            //snacks[i].g;
+            
         }
     }
-    
+    //constructor
 public void VendingMachine(){
     
 }
 public int returnChange(){
-   int x=0; 
-return x;
+
 }
 public void makeSelection(){
     
 }
-public void insertMoney(){
+public void insertMoney(int amt){
+    bank+=amt;
+}
+public void stockBank(double money){
+    
 }
 
 public void stockSnacks(Snack s, int qty){
-    
+    s.addAmt(qty);
 }
 
 }

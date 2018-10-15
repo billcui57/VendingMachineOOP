@@ -11,6 +11,7 @@ package vendingmachine;
  */
 public class VendingMachine {
 Snack[] snacks = new Snack[10];
+Drink[] drinks=new Drink[10];
 public int bank;
 public int moneyIn;
 public int[] snackQty;

@@ -9,7 +9,7 @@ package vendingmachine;
  *
  * @author 348848128
  */
-class Snack {
+class Snack implements Products{
     private String name;
     private String description;
     private Double price;

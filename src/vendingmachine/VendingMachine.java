@@ -20,7 +20,7 @@ public int[] snackQty;
     public void main(String[] args) {
         // TODO code application logic here
         for(int i=0;i<snacks.length;i++){
-            snacks[i].g;
+            //snacks[i].g;
         }
     }
     
@@ -36,5 +36,11 @@ public void makeSelection(){
 }
 public void insertMoney(){
 }
+
+public void stockSnacks(Snack s, int qty){
+    
 }
+
+}
+
 

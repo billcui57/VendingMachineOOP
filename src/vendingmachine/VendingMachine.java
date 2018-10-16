@@ -10,24 +10,24 @@ package vendingmachine;
  * @author Fiona
  */
 public class VendingMachine {
-Snack[] snacks = new Snack[10];
-Drink[] drinks=new Drink[10];
+Snack[] snacks;
+Drink[] drinks;
 public int bank;
 public int moneyIn;
-public int[] snackQty;
     /**
      * @param args the command line arguments
      */
-    public void main(String[] args) {
-        // TODO code application logic here
-        for(int i=0;i<snacks.length;i++){
-            
-        }
-    }
+    
     //constructor
-public void VendingMachine(){
+Change c;
+public void VendingMachine(int newBankAmt, int numSnacks,int numDrinks){
+    bank = newBankAmt;
+    c=new Change(bank);
+    snacks = new Snack[numSnacks];
+    drinks = new Drink[numDrinks];
     
 }
+
 public int returnChange(){
 
 }

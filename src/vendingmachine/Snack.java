@@ -13,6 +13,7 @@ class Snack implements Products{
     private String name;
     private String description;
     private Double price;
+    private int calories;
     private int amt;
     
     public Snack(String newName,String newDes,Double newPrice,int newAmt){
@@ -51,6 +52,21 @@ class Snack implements Products{
     public void setPrice(Double newPrice){
         price = newPrice;
     }
+
+    /**
+     * @return the calories
+     */
+    public int getCalories() {
+        return calories;
+    }
+
+    /**
+     * @param calories the calories to set
+     */
+    public void setCalories(int calories) {
+        this.calories = calories;
+    }
+    
     
     
     

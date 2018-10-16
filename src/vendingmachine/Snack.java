@@ -7,7 +7,7 @@ package vendingmachine;
 
 /**
  *
- * @author 348848128
+ * @author Bill Cui, Adi Venkatesh
  */
 class Snack implements Products {
 
@@ -17,6 +17,14 @@ class Snack implements Products {
     private int calories;
     private int amt;
 
+    /**
+     * @author Bill Cui
+     * @param newName name of the snack
+     * @param newDes description of the snack
+     * @param newPrice price of the snack
+     * @param newCalories calories of the snack
+     * @param newAmt amount of snacks available
+     */
     public Snack(String newName, String newDes, Double newPrice, int newCalories, int newAmt) {
         name = newName;
         description = newDes;
@@ -26,6 +34,7 @@ class Snack implements Products {
     
       /**
      * @param newName the name to set
+     * @author Adi Venkatesh
      */
     public void setName(String newName) {
         name = newName;
@@ -33,6 +42,7 @@ class Snack implements Products {
 
     /**
      * @param newDes the description to set
+     * @author Adi Venkatesh
      */
     public void setDescription(String newDes) {
         description = newDes;
@@ -40,6 +50,7 @@ class Snack implements Products {
 
     /**
      * @param newAmt the amt to set
+     * @author Adi Venkatesh
      */
     public void setAmt(int newAmt) {
         amt = newAmt;
@@ -47,22 +58,31 @@ class Snack implements Products {
 
     /**
      * @return the amt
+     * @author Bill Cui
      */
     public int getAmt() {
         return amt;
     }
 
-
+/**
+ * @author Bill Cui
+ * @param add amount you are adding
+ */
     public void addAmt(int add) {
         setAmt(amt + add);
     }
 
+ /**
+  * @author Bill Cui
+  * @param rm amount you are removing
+  */
     public void rmAmt(int rm) {
         setAmt(amt - rm);
     }
 
     /**
      * @return the name
+     * @author Adi Venkatesh
      */
     public String getName() {
         return name;
@@ -70,6 +90,7 @@ class Snack implements Products {
 
     /**
      * @return the description
+     * @author Adi Venkatesh
      */
     public String getDescription() {
         return description;
@@ -77,6 +98,7 @@ class Snack implements Products {
 
     /**
      * @return the price
+     * @author Bill Cui
      */
     public Double getPrice() {
         return price;
@@ -84,6 +106,7 @@ class Snack implements Products {
 
     /**
      * @param newPrice the price to set
+     * @author Bill Cui
      */
     public void setPrice(Double newPrice) {
         price = newPrice;
@@ -91,6 +114,7 @@ class Snack implements Products {
 
     /**
      * @return the calories
+     * @author Adi Venkatesh
      */
     public int getCalories() {
         return calories;
@@ -98,6 +122,7 @@ class Snack implements Products {
 
     /**
      * @param newCalories the calories to set
+     * @author Adi Venkatesh
      */
     public void setCalories(int newCalories) {
         calories = newCalories;

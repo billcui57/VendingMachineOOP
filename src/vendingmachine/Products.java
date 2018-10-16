@@ -7,7 +7,7 @@ package vendingmachine;
 
 /**
  *
- * @author 348848128
+ * @author Bill Cui
  */
 public interface Products {
     public int getAmt();

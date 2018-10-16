@@ -12,8 +12,8 @@ package vendingmachine;
 public class Drink extends Snack implements Products{
 
     int volume;
-    public Drink(String newName, String newDes, Double newPrice, int newAmt, int newVolume) {
-        super(newName, newDes, newPrice, newAmt);
+    public Drink(String newName, String newDes, Double newPrice, int newCalories, int newAmt, int newVolume) {
+        super(newName, newDes, newPrice, newAmt, newCalories);
         volume = newVolume;
     }
     

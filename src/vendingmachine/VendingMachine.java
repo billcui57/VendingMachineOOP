@@ -14,6 +14,8 @@ Snack[] snacks;
 Drink[] drinks;
 public int bank;
 public int moneyIn;
+private int selectedSnck;
+private int selectedDrnk;
     /**
      * @param args the command line arguments
      */
@@ -26,13 +28,23 @@ public void VendingMachine(int newBankAmt, int numSnacks,int numDrinks){
     snacks = new Snack[numSnacks];
     drinks = new Drink[numDrinks];
     
-}
-
-public int returnChange(){
-
-}
-public void makeSelection(){
+    //initialze snacks in VM
+    snacks[0]= new Snack("Snickers","chewy",2.50,150,10);
+    snacks[1]= new Snack("Mars","chewy",2.50,200,10);
+    snacks[2]= new Snack("Wonderbar","salty",2.50,300,10);
+    snacks[3]= new Snack("KitKat","crunchy",2.50,150,10);
+    snacks[4]= new Snack("Aero","sweet",2.50,150,10);
+    snacks[5]= new Snack("Smarties","crunchy",2.50,100,10);
+    snacks[6]= new Snack("Caramilk","salty",2.50,150,10);
     
+    
+}
+
+//public int returnChange(){
+////return ;
+//} 
+public Snack makeSelection(int selected){
+    return snacks[selected];
 }
 public void insertMoney(int amt){
     bank+=amt;
@@ -44,6 +56,7 @@ public void stockBank(double money){
 public void stockSnacks(Snack s, int qty){
     s.addAmt(qty);
 }
+
 
 }
 

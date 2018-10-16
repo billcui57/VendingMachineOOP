@@ -43,8 +43,34 @@ public void VendingMachine(int newBankAmt, int numSnacks,int numDrinks){
 //public int returnChange(){
 ////return ;
 //} 
-public Snack makeSelection(int selected){
-    return snacks[selected];
+public Snack makeSelection(String selected){
+    int snackIndex=0;
+    switch(selected){
+        case "Snickers":
+            snackIndex=0;
+            break;
+            case "Mars":
+                snackIndex=1;
+            break;
+            case "Wonderbar":
+                snackIndex=2;
+            break;
+            case "KitKat":
+                snackIndex=3;
+            break;
+            case "Aero":
+                snackIndex=4;
+            break;
+            case "Smarties":
+                snackIndex=5;
+            break;
+            case "Caramilk":
+                snackIndex=6;
+            break;
+
+            
+    } 
+    return snacks[snackIndex];
 }
 public void insertMoney(int amt){
     bank+=amt;

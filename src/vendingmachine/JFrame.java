@@ -28,18 +28,107 @@ public class JFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new vendingmachine.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        snacksList = new javax.swing.JList();
+        snacksLabel = new javax.swing.JLabel();
+        drinksLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        drinksList = new javax.swing.JList();
+        descriptionLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
+        confirmSelection = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        snacksList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Snicker", "Mars", "Wonderbar", "KitKat", "Aero", "Smarties", "Caramilk" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        snacksList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                snacksListMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(snacksList);
+
+        snacksLabel.setText("Snacks");
+
+        drinksLabel.setText("Drinks");
+
+        drinksList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Coke", "Pepsi", "Fanta", "Canada Dry", "Mountain Dew", "Dr.Pepper", "7UP" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        drinksList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                drinksListMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(drinksList);
+
+        descriptionLabel.setText("Description");
+
+        priceLabel.setText("Price");
+
+        confirmSelection.setText("Confirm Selection");
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(descriptionLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(priceLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(confirmSelection)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(snacksLabel)
+                        .addGap(66, 66, 66)
+                        .addComponent(drinksLabel)))
+                .addGap(85, 85, 85))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(descriptionLabel)
+                            .addComponent(priceLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1))
+                    .addComponent(confirmSelection))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(snacksLabel)
+                    .addComponent(drinksLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -61,6 +150,16 @@ public class JFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void snacksListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_snacksListMouseClicked
+        // TODO add your handling code here:
+        
+        System.out.println(snacksList.getSelectedValue());
+    }//GEN-LAST:event_snacksListMouseClicked
+
+    private void drinksListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drinksListMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_drinksListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -98,6 +197,16 @@ public class JFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton confirmSelection;
+    private javax.swing.JLabel descriptionLabel;
+    private javax.swing.JLabel drinksLabel;
+    private javax.swing.JList drinksList;
+    private javax.swing.JLabel jLabel1;
     private vendingmachine.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel priceLabel;
+    private javax.swing.JLabel snacksLabel;
+    private javax.swing.JList snacksList;
     // End of variables declaration//GEN-END:variables
 }

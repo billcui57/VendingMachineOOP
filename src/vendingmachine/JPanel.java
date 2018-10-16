@@ -5,6 +5,8 @@
  */
 package vendingmachine;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author 348848128
@@ -16,6 +18,17 @@ public class JPanel extends javax.swing.JPanel {
      */
     public JPanel() {
         initComponents();
+    }
+    
+    String scene = "selection";
+    public void paintComponent(Graphics g){
+        switch(scene){
+            case "selection":
+                
+                break;
+                
+                
+        }
     }
 
     /**

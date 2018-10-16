@@ -150,11 +150,13 @@ public class JFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    
     private void snacksListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_snacksListMouseClicked
         // TODO add your handling code here:
-        
-        System.out.println(snacksList.getSelectedValue());
+        jPanel1.machine.makeSelection(snacksList.getSelectedValue());
+       
     }//GEN-LAST:event_snacksListMouseClicked
 
     private void drinksListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drinksListMouseClicked

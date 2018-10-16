@@ -16,8 +16,12 @@ public class JPanel extends javax.swing.JPanel {
     /**
      * Creates new form JPanel
      */
+    VendingMachine machine = new VendingMachine(1000,7,7);
     public JPanel() {
         initComponents();
+        
+        
+        
     }
     
     String scene = "selection";

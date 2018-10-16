@@ -22,7 +22,7 @@ private int selectedDrnk;
     
     //constructor
 Change c;
-public void VendingMachine(int newBankAmt, int numSnacks,int numDrinks){
+public VendingMachine(int newBankAmt, int numSnacks,int numDrinks){
     bank = newBankAmt;
     c=new Change(bank);
     snacks = new Snack[numSnacks];

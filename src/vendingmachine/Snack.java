@@ -9,47 +9,83 @@ package vendingmachine;
  *
  * @author 348848128
  */
-class Snack implements Products{
+class Snack implements Products {
+
     private String name;
     private String description;
     private Double price;
     private int calories;
     private int amt;
-    
-    public Snack(String newName,String newDes,Double newPrice,int newAmt){
-        name= newName;
+
+    public Snack(String newName, String newDes, Double newPrice, int newCalories, int newAmt) {
+        name = newName;
         description = newDes;
-        price=newPrice;
-        amt=newAmt;
+        price = newPrice;
+        amt = newAmt;
     }
     
-    
-    public int getAmt(){
+      /**
+     * @param newName the name to set
+     */
+    public void setName(String newName) {
+        name = newName;
+    }
+
+    /**
+     * @param newDes the description to set
+     */
+    public void setDescription(String newDes) {
+        description = newDes;
+    }
+
+    /**
+     * @param newAmt the amt to set
+     */
+    public void setAmt(int newAmt) {
+        amt = newAmt;
+    }
+
+    /**
+     * @return the amt
+     */
+    public int getAmt() {
         return amt;
     }
-    
-    public void addAmt(int add){
-        amt+=add;
+
+
+    public void addAmt(int add) {
+        setAmt(amt + add);
     }
-    
-    public void rmAmt(int rm){
-        amt-=rm;
+
+    public void rmAmt(int rm) {
+        setAmt(amt - rm);
     }
-    
-    
-    public String getName(){
+
+    /**
+     * @return the name
+     */
+    public String getName() {
         return name;
     }
-    
-    public String getDescription(){
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
         return description;
     }
-    
-    public Double getPrice(){
+
+    /**
+     * @return the price
+     */
+    public Double getPrice() {
         return price;
     }
-    
-    public void setPrice(Double newPrice){
+
+    /**
+     * @param newPrice the price to set
+     */
+    public void setPrice(Double newPrice) {
         price = newPrice;
     }
 
@@ -61,13 +97,12 @@ class Snack implements Products{
     }
 
     /**
-     * @param calories the calories to set
+     * @param newCalories the calories to set
      */
-    public void setCalories(int calories) {
-        this.calories = calories;
+    public void setCalories(int newCalories) {
+        calories = newCalories;
     }
-    
-    
-    
-    
+
+  
+
 }

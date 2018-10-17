@@ -20,6 +20,7 @@ public class VendingMachine {
     private int selectedSnck;
     private int selectedDrnk;
     private double profit=0;
+    private double expenses;
     /**
      * @param args the command line arguments
      */
@@ -58,15 +59,22 @@ public class VendingMachine {
         s.addAmt(qty);
     }
 //decrease quantity of snacks in storage
-    public Change sell(Snack x, double payedAmt) {
+    public Change sellSnacks(Snack x, double payedAmt, int amt) {
             Change temp = new Change(payedAmt);
-            temp.findChange(x.getPrice(),payedAmt);
+            temp.findChange(x.getPrice()*amt,payedAmt);
             bank += payedAmt;
-            x.rmAmt(1);
+            x.rmAmt(amt);
             profit+=payedAmt;
             return temp; 
-        
+            
     }
+    
+    public void buySnacks(Snack s, int amt){
+        bank-=(s.getPrice()-1)*amt;
+        expenses+=(s.getPrice()-1)*amt;
+        s.addAmt(amt);
+    }
+            
     
 
 }

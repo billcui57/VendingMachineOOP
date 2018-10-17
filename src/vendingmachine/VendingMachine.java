@@ -41,14 +41,12 @@ public VendingMachine(int newBankAmt, int numS,int numD){
     
 }
 
-
-
 //public int returnChange(){
 ////return ;
 //} 
-public Snack makeSnackSelection(String selected){
+public Snack makeSnackSelection(int index){
     int snackIndex=0;
-    switch(selected){
+  /*  switch(selected){
         case "Snickers":
             snackIndex=0;
             break;
@@ -72,8 +70,8 @@ public Snack makeSnackSelection(String selected){
             break;
 
             
-    } 
-    return snacks[snackIndex];
+    } */
+    return snacks[index];
 }
 
 

@@ -16,9 +16,24 @@ import java.text.DecimalFormat;
 public class Display {
     DecimalFormat f = new DecimalFormat("#0.00");
 
-    public Display(String newName, String newDes, Double newPrice, int newAmt) {
-       
+    public static void main(String[] args){
+        VendingMachine machine = new VendingMachine(1000,7,7);
+        listSnacks(machine);
+        
+        
     }
+    
+    public static void listSnacks(VendingMachine machine){
+        
+        for(int i=0;i<machine.numSnacks;i++){
+            System.out.println(machine.snacks[i].getName());
+        }
+        
+    }
+    
+   
+    
+    
     
     public void displaySnacks(){
         

@@ -5,6 +5,8 @@
  */
 package vendingmachine;
 
+import java.util.Random;
+
 /**
  *
  * @author Bill Cui, Adi Venkatesh
@@ -25,12 +27,47 @@ class Snack implements Products {
      * @param newCalories calories of the snack
      * @param newAmt amount of snacks available
      */
-    public Snack(String newName, String newDes, Double newPrice, int newCalories, int newAmt) {
+    public Snack(String newName,String newDes, double newPrice, int newCalories, int newAmt) {
         name = newName;
         description = newDes;
         price = newPrice;
         amt = newAmt;
+        calories=newCalories;
     }
+    
+    /**
+     * @author Bill Cui
+     * new random snack
+     */
+    public Snack() {
+        Snack temp = new Snack("","",0,0,0);
+        temp=randomSnack();
+        name = temp.name;
+        description = temp.description;
+        price = temp.price;
+        amt = temp.amt;
+        calories = temp.calories;
+        
+    }
+    
+    public Snack randomSnack(){
+        
+        Snack temp = new Snack("","",0,0,0);
+        String[] snackNames = {"Mars","Snickers","O'Henry","Aero","Clif","Cheetos","Lay's","Doritos",
+        "Cheetos","Quakers"};
+        String[] snackDescriptions = {"Crunchy","Chewy","Sweet","Yummy","Yucky","Cool"};
+        Random ran = new Random();
+        temp.name=snackNames[ran.nextInt(snackNames.length)];
+        temp.description=snackDescriptions[ran.nextInt(snackDescriptions.length)];
+        temp.price=(double)ran.nextInt(20);
+        temp.calories=ran.nextInt(2000);
+        temp.amt=ran.nextInt(20);
+        
+        return temp;
+    }
+    
+    
+    
     
       /**
      * @param newName the name to set

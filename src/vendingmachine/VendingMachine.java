@@ -14,6 +14,8 @@ Snack[] snacks;
 Drink[] drinks;
 public int bank;
 public int moneyIn;
+public int numSnacks;
+public int numDrinks;
 private int selectedSnck;
 private int selectedDrnk;
     /**
@@ -22,28 +24,29 @@ private int selectedDrnk;
     
     //constructor
 Change c;
-public VendingMachine(int newBankAmt, int numSnacks,int numDrinks){
+public VendingMachine(int newBankAmt, int numS,int numD){
+    numSnacks=numS;
+    numDrinks=numD;
     bank = newBankAmt;
     c=new Change(bank);
     snacks = new Snack[numSnacks];
     drinks = new Drink[numDrinks];
     
+    
     //initialze snacks in VM
-    snacks[0]= new Snack("Snickers","chewy",2.50,150,10);
-    snacks[1]= new Snack("Mars","chewy",2.50,200,10);
-    snacks[2]= new Snack("Wonderbar","salty",2.50,300,10);
-    snacks[3]= new Snack("KitKat","crunchy",2.50,150,10);
-    snacks[4]= new Snack("Aero","sweet",2.50,150,10);
-    snacks[5]= new Snack("Smarties","crunchy",2.50,100,10);
-    snacks[6]= new Snack("Caramilk","salty",2.50,150,10);
+    for(int i=0;i<numSnacks;i++){
+        snacks[i]=new Snack();
+    }
     
     
 }
 
+
+
 //public int returnChange(){
 ////return ;
 //} 
-public Snack makeSelection(String selected){
+public Snack makeSnackSelection(String selected){
     int snackIndex=0;
     switch(selected){
         case "Snickers":
@@ -72,6 +75,9 @@ public Snack makeSelection(String selected){
     } 
     return snacks[snackIndex];
 }
+
+
+
 public void insertMoney(int amt){
     bank+=amt;
 }

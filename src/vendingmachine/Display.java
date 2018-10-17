@@ -1,5 +1,8 @@
 /*
+
+
  * To change this license header, choose License Headers in Project Properties.
+
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -16,17 +19,8 @@ import java.text.DecimalFormat;
 public class Display {
     DecimalFormat f = new DecimalFormat("#0.00");
 
-    public static void main(String[] args){
-        VendingMachine machine = new VendingMachine(1000,7,7);
-        listSnacks(machine);
-<<<<<<< HEAD
-       
-          
-=======
-        machine.makeSnackSelection(int);
-        
-        
->>>>>>> origin/master
+
+/*
     }
     
     public static void listSnacks(VendingMachine machine){
@@ -44,18 +38,8 @@ public class Display {
     public void displaySnacks(){
         
     }
-    
-<<<<<<< HEAD
-    public void makeSelection(){
-        
-    }
-   
-=======
-    
-    
->>>>>>> origin/master
-    
-    
-    
-}
 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project Properties.
+    
+    

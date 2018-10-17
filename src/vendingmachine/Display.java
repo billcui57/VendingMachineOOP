@@ -19,6 +19,7 @@ public class Display {
     public static void main(String[] args){
         VendingMachine machine = new VendingMachine(1000,7,7);
         listSnacks(machine);
+        machine.makeSnackSelection(int);
         
         
     }
@@ -26,7 +27,7 @@ public class Display {
     public static void listSnacks(VendingMachine machine){
         
         for(int i=0;i<machine.numSnacks;i++){
-            System.out.println(machine.snacks[i].getName());
+            System.out.println((i+1)+"\t"+machine.snacks[i].getName() +"\t" + machine.snacks[i].getDescription());
         }
         
     }
@@ -39,9 +40,7 @@ public class Display {
         
     }
     
-    public void makeSelection(){
-        
-    }
+    
     
     
     

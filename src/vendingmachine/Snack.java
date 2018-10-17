@@ -13,11 +13,11 @@ import java.util.Random;
  */
 class Snack implements Products {
 
-    private String name;
-    private String description;
-    private Double price;
-    private int calories;
-    private int amt;
+    protected String name;
+    protected String description;
+    protected Double price;
+    protected int calories;
+    protected int amt;
 
     /**
      * @author Bill Cui

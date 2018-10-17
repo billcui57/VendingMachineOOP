@@ -19,8 +19,8 @@ public class Display {
     public static void main(String[] args){
         VendingMachine machine = new VendingMachine(1000,7,7);
         listSnacks(machine);
-        
-        
+       
+          
     }
     
     public static void listSnacks(VendingMachine machine){
@@ -42,7 +42,7 @@ public class Display {
     public void makeSelection(){
         
     }
-    
+   
     
     
     

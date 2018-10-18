@@ -7,7 +7,7 @@ package vendingmachine;
 
 /**
  *
- * @author billc
+ * @author Bill Cui
  */
 public class Change {
     private int toonies;
@@ -16,6 +16,10 @@ public class Change {
     private int dimes;
     private int nickels;
     
+    /**
+     * 
+     * @param totalAmt the total amount of change
+     */
     public Change(double totalAmt){
         
         toonies=(int)(totalAmt/2);
@@ -57,10 +61,18 @@ public class Change {
         }
     }
     
+    /**
+     * 
+     * @param type coin type
+     */
     public void add(String type){
         add(type,1);
     }
     
+    /**
+     * 
+     * @param amt amt of coin
+     */
     public void add(Change amt){
         toonies+=amt.toonies;
         loonies+=amt.loonies;
@@ -74,10 +86,19 @@ public class Change {
         return toonies*2+loonies*1+quarters*0.25+dimes*0.1+nickels*0.05;
     }
     
+    /**
+     * 
+     * @param type coin type
+     * @param amt amt of coin
+     */
     public void remove(String type, int amt){
         add(type,amt*-1);
     }
     
+    /**
+     * 
+     * @param amt amt of  coin
+     */
     public void remove(double amt){
         Change temp = new Change(0);
         temp = denominate(amt);
@@ -103,6 +124,11 @@ public class Change {
         nickels=0;
     }
     
+    /**
+     * 
+     * @param amt amt of coin
+     * @return temp
+     */
     public Change denominate(double amt){
         Change temp = new Change(0);
         temp.toonies=(int)(amt/2);
@@ -117,6 +143,12 @@ public class Change {
         return temp;
     }
     
+    /**
+     * 
+     * @param totalAmt 
+     * @param givenAmt amt of change given by user
+     * @return temp
+     */
     public Change findChange(double totalAmt,double givenAmt){
         Change temp = new Change(0);
         temp = denominate(totalAmt-givenAmt);

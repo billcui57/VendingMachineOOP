@@ -9,11 +9,20 @@ import java.util.Random;
 
 /**
  *
- * @author Bill Cui, Adi Venkatesh
+ * @author Adi Venkatesh
  */
 public class Drink extends Snack implements Products{
  
     private int volume;
+    /**
+     * 
+     * @param newName name  of the drink
+     * @param newDes description of the drink
+     * @param newPrice price of the drink
+     * @param newCalories calories of the drink
+     * @param newAmt amount of drinks available
+     * @param newVolume volume of the drink
+     */
     public Drink(String newName, String newDes, Double newPrice, int newCalories, int newAmt, int newVolume) {
         super(newName, newDes, newPrice, newAmt, newCalories);
         volume = newVolume;

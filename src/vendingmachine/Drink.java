@@ -50,7 +50,7 @@ public class Drink extends Snack implements Products{
             "tastes like ginger", "tastes like toothpaste", "tastes like orange", "tastes sweet", 
             "tastes like lemon", "tastes like tea", "tastes like ginger", "tastes like toothpaste", 
             "tastes like orange"};
-                Random ran = new Random();
+        Random ran = new Random();
         temp.name=drinkNames[ran.nextInt(drinkNames.length)];
         temp.description=drinkDescriptions[ran.nextInt(drinkDescriptions.length)];
         temp.price=(double)ran.nextInt(20);
@@ -59,11 +59,23 @@ public class Drink extends Snack implements Products{
         
         return temp;
     }
+
+    /**
+     * @return the volume
+     */
+    public int getVolume() {
+        return volume;
+    }
+
+    /**
+     * @param newVolume the volume to set
+     */
+    public void setVolume(int newVolume) {
+        volume = newVolume;
+    }
     
     
     
     
-    
-    
-    
+       
 }

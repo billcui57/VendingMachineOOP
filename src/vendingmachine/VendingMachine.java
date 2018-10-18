@@ -44,7 +44,6 @@ public class VendingMachine {
         for (int i = 0; i < numSnacks; i++) {
             snacks[i] = new Snack();
         }
-
     }
 
     /**
@@ -82,7 +81,7 @@ bank+=money;
     }
     
     /**
- * This method adds updated the stock in VM
+ * This overload method adds the updated stock in VM
  * @param s the specific drink being added to VM
  * @param qty the amount of the drink being added to VM
  */
@@ -106,7 +105,7 @@ bank+=money;
             
     }
         /**
-     * This method decreases the quantity of drinks in storage
+     * This overload method decreases the quantity of drinks in storage
      * @param x the drink being purchased
      * @param payedAmt the money payed to VM
      * @param amt the amount of drinks being bought
@@ -134,7 +133,7 @@ bank+=money;
     }
     
        /**
-     * This method updates the bank after buying drinks to fill the VM 
+     * This overload method updates the bank after buying drinks to fill the VM 
      * 
      * @param s this is the drinks being bought
      * @param amt the amount of drinks being bought

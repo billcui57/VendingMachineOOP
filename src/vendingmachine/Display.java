@@ -18,28 +18,35 @@ import java.text.DecimalFormat;
 
 public class Display {
     DecimalFormat f = new DecimalFormat("#0.00");
-
-
-/*
+    
+    
+        public static void main(String[] args) {
+       
+     
     }
     
-    public static void listSnacks(VendingMachine machine){
+    
+    public void listSnacks(VendingMachine machine){
         
-        for(int i=0;i<machine.numSnacks;i++){
+        for(int i = 0; i<machine.numSnacks; i++){
             System.out.println((i+1)+"\t"+machine.snacks[i].getName() +"\t" + machine.snacks[i].getDescription());
+            
         }
-        
-    }
-    
-   
-    
-    
+
+}
     
     public void displaySnacks(){
         
     }
+    
+    
+    public void makeSelection(){
+        
+    }
+    
+}
 
- * To change this license header, choose License Headers in Project Properties.
- * To change this license header, choose License Headers in Project Properties.
+
+
     
     

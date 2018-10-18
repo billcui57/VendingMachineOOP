@@ -151,7 +151,7 @@ public class Change {
      */
     public Change findChange(double totalAmt,double givenAmt){
         Change temp = new Change(0);
-        temp = denominate(totalAmt-givenAmt);
+        temp = denominate(givenAmt-totalAmt);
         return temp;
     }
     

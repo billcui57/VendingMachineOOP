@@ -52,7 +52,7 @@ public class VendingMachine {
      * @param index the position of the snack in the array
      * @return the name of snack being purchased
      */
-    public Snack makeSnackSelection(int index) {
+    public Snack getSnack(int index) {
         return snacks[index];
     }
     
@@ -61,7 +61,7 @@ public class VendingMachine {
      * @param index the position of the drink in the array
      * @return the name of drink being purchased
      */
-    public Drink makeDrinkSelection(int index) {
+    public Drink getDrink(int index) {
         return drinks[index];
     }
 
@@ -77,7 +77,7 @@ bank+=money;
  * @param s the specific snack being added to VM
  * @param qty the amount of the snack being added to VM
  */
-    public void stockSnacks(Snack s, int qty) {
+    public void stock(Snack s, int qty) {
         s.addAmt(qty);
     }
     
@@ -86,7 +86,7 @@ bank+=money;
  * @param s the specific drink being added to VM
  * @param qty the amount of the drink being added to VM
  */
-    public void stockDrinks(Drink s, int qty) {
+    public void stock(Drink s, int qty) {
         s.addAmt(qty);
     }
     /**
@@ -96,7 +96,7 @@ bank+=money;
      * @param amt the amount of snack being bought
      * @return returns the change due to the customer
      */
-    public Change sellSnacks(Snack x, double payedAmt, int amt) {
+    public Change sell(Snack x, double payedAmt, int amt) {
             Change temp = new Change(0);
             temp=temp.findChange(x.getPrice()*amt,payedAmt);
             bank += payedAmt;
@@ -112,7 +112,7 @@ bank+=money;
      * @param amt the amount of drinks being bought
      * @return returns the change due to the customer
      */
-    public Change sellDrinks(Drink x, double payedAmt, int amt) {
+    public Change sell(Drink x, double payedAmt, int amt) {
             Change temp = new Change(0);
             temp=temp.findChange(x.getPrice()*amt,payedAmt);
             bank += payedAmt;
@@ -127,7 +127,7 @@ bank+=money;
      * @param s this is the snacks being bought
      * @param amt the amount of snacks being bought
      */
-    public void buySnacks(Snack s, int amt){
+    public void buy(Snack s, int amt){
         bank-=(s.getPrice()-1)*amt;
         expenses+=(s.getPrice()-1)*amt;
         s.addAmt(amt);
@@ -139,7 +139,7 @@ bank+=money;
      * @param s this is the drinks being bought
      * @param amt the amount of drinks being bought
      */
-    public void buyDrinks(Drink s, int amt){
+    public void buy(Drink s, int amt){
         bank-=(s.getPrice()-1)*amt;
         expenses+=(s.getPrice()-1)*amt;
         s.addAmt(amt);

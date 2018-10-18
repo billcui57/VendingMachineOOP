@@ -27,12 +27,12 @@ public class Display {
         listSnacks(machine);
         System.out.println("Enter in snack index to purchase");
         int index = input.nextInt()-1;
-        System.out.println("Selected "+ machine.makeSnackSelection(index).name + 
-                "\nPrice is $"+machine.makeSnackSelection(index).price+
+        System.out.println("Selected "+ machine.getSnack(index).name + 
+                "\nPrice is $"+machine.getSnack(index).price+
                 "\nHow many would you like to buy?");
         int amt = input.nextInt();
-        System.out.println("Your total is $"+(machine.makeSnackSelection(index).price * amt));
-        Change change =  machine.sellSnacks(machine.makeSnackSelection(index),input.nextDouble(), amt);
+        System.out.println("Your total is $"+(machine.getSnack(index).price * amt));
+        Change change =  machine.sell(machine.getSnack(index),input.nextDouble(), amt);
         System.out.println("Your change is " + change.toString());
         
     }
@@ -40,7 +40,7 @@ public class Display {
     public static void listSnacks(VendingMachine machine) {
         System.out.println("Snack Index \t Snack Name \t Snack Description" );
         for (int i = 0; i < machine.numSnacks; i++) {
-            System.out.println((i + 1) + "\t\t" + machine.snacks[i].getName() + "\t\t" + machine.snacks[i].getDescription());
+            System.out.println((i + 1) + "\t\t" + machine.getSnack(i).getName() + "\t\t" + machine.getSnack(i).getDescription());
         }
 
     }

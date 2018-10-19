@@ -23,19 +23,53 @@ public class Display {
     public static void main(String[] args) {
         VendingMachine machine = new VendingMachine(1000,7,7);
         Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to Vendobot");
-        listSnacks(machine);
-        System.out.println("Enter in snack index to purchase");
-        int index = input.nextInt()-1;
-        System.out.println("Selected "+ machine.getSnack(index).name + 
-                "\nPrice is $"+machine.getSnack(index).price+
-                "\nHow many would you like to buy?");
-        int amt = input.nextInt();
-        System.out.println("Your total is $"+(machine.getSnack(index).price * amt));
-        Change change =  machine.sell(machine.getSnack(index),input.nextDouble(), amt);
-        System.out.println("Your change is " + change.toString());
+        System.out.println("Press 1 to buy snacks, Press 2 to buy drinks");
+        
+        
+        int choice = input.nextInt();
+       
+        
+        
+        switch (choice) {
+            case 1:
+                {
+                    System.out.println("Welcome to Vendobot");
+                    listSnacks(machine);
+                    System.out.println("Enter in snack index to purchase");
+                    int index = input.nextInt()-1;
+                    System.out.println("Selected "+ machine.getSnack(index).name +
+                            "\nPrice is $"+machine.getSnack(index).price+
+                            "\nHow many would you like to buy?");
+                    int amt = input.nextInt();
+                    System.out.println("Your total is $"+(machine.getSnack(index).price * amt));
+                    Change change =  machine.sell(machine.getSnack(index),input.nextDouble(), amt);
+                    System.out.println("Your change is " + change.toString());
+                    break;
+                }
+            case 2:
+                System.out.println("Welcome to Vendobot");
+                listDrinks(machine);
+                System.out.println("Enter in drink index to purchase");
+                int index = input.nextInt()-1;
+                System.out.println("Selected "+ machine.getDrink(index).name +
+                        "\nPrice is $"+machine.getDrink(index).price+
+                        "\nHow many would you like to buy?");
+                int amt = input.nextInt();
+                System.out.println("Your total is $"+(machine.getDrink(index).price * amt));
+                Change change =  machine.sell(machine.getDrink(index),input.nextDouble(), amt);
+                System.out.println("Your change is " + change.toString());
+                break;
+            default:
+                System.out.println("Incorrect input, please try again");
+                System.out.println("Press 1 to buy snacks, Press 2 to buy drinks");
+                choice = input.nextInt();
+                break;
+        } 
         
     }
+    
+  
+  
 
     public static void listSnacks(VendingMachine machine) {
         System.out.println("Snack Index \t Snack Name \t Snack Description" );
@@ -43,6 +77,13 @@ public class Display {
             System.out.println((i + 1) + "\t\t" + machine.getSnack(i).getName() + "\t\t" + machine.getSnack(i).getDescription());
         }
 
+    }
+    
+    public static void listDrinks(VendingMachine machine){
+        System.out.println("Drink Index \t Drink Name \t Drink Description");
+        for(int i = 0; i <machine.numDrinks; i++){
+            System.out.println((i+1) + "\t\t" + machine.getDrink(i).getName() + "\t\t" + machine.getDrink(i).getDescription());
+        }
     }
 
     

@@ -41,7 +41,7 @@ class Snack implements Products {
      */
     public Snack() {
         Snack temp = new Snack("","",0,0,0);
-        temp=randomSnack();
+        temp=temp.randomSnack();
         name = temp.name;
         description = temp.description;
         price = temp.price;
@@ -59,9 +59,9 @@ class Snack implements Products {
         Random ran = new Random();
         temp.name=snackNames[ran.nextInt(snackNames.length)];
         temp.description=snackDescriptions[ran.nextInt(snackDescriptions.length)];
-        temp.price=(double)ran.nextInt(20);
-        temp.calories=ran.nextInt(2000);
-        temp.amt=ran.nextInt(20);
+        temp.price=(double)ran.nextInt(20)+1;
+        temp.calories=ran.nextInt(2000)+1;
+        temp.amt=20;
         
         return temp;
     }
@@ -105,16 +105,26 @@ class Snack implements Products {
  * @author Bill Cui
  * @param add amount you are adding
  */
-    public void addAmt(int add) {
+    public void addAmt(int add) throws VendingMachineExceptions{
+        if((amt+add)>100){
+            throw new VendingMachineExceptions("Overstocked on "+name+"!");
+        }else{
         setAmt(amt + add);
+        }
     }
 
  /**
   * @author Bill Cui
   * @param rm amount you are removing
   */
-    public void rmAmt(int rm) {
-        setAmt(amt - rm);
+    public void rmAmt(int rm) throws VendingMachineExceptions{
+        if(amt-rm <0){
+            throw new VendingMachineExceptions("Not enough of " + name +" in stock!");
+        }else{
+            System.out.println("hi");
+            setAmt(amt - rm);
+        }
+        
     }
 
     /**

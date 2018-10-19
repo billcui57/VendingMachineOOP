@@ -13,10 +13,11 @@ public class VendingMachine {
 
     private Snack[] snacks;
     private Drink[] drinks;
-    public int bank;
-    public int moneyIn;
-    public int numSnacks;
-    public int numDrinks;
+    private int bank;
+   
+    protected int numSnacks;
+    protected int numDrinks;
+    public boolean successfulTransaction=true;
     private int selectedSnck;
     private int selectedDrnk;
     private double profit=0;
@@ -43,8 +44,10 @@ public class VendingMachine {
         //initialze snacks in VM
         for (int i = 0; i < numSnacks; i++) {
             snacks[i] = new Snack();
+            drinks[i] = new Drink();
+            
         }
-
+        
     }
 
     /**
@@ -77,16 +80,16 @@ bank+=money;
  * @param s the specific snack being added to VM
  * @param qty the amount of the snack being added to VM
  */
-    public void stock(Snack s, int qty) {
+    public void stock(Snack s, int qty) throws VendingMachineExceptions {
         s.addAmt(qty);
     }
     
     /**
- * This method adds updated the stock in VM
+ * This overload method adds the updated stock in VM
  * @param s the specific drink being added to VM
  * @param qty the amount of the drink being added to VM
  */
-    public void stock(Drink s, int qty) {
+    public void stock(Drink s, int qty) throws VendingMachineExceptions {
         s.addAmt(qty);
     }
     /**
@@ -96,27 +99,38 @@ bank+=money;
      * @param amt the amount of snack being bought
      * @return returns the change due to the customer
      */
-    public Change sell(Snack x, double payedAmt, int amt) {
+    public Change sell(Snack x, double payedAmt, int amt) throws ChangeExceptions {
             Change temp = new Change(0);
             temp=temp.findChange(x.getPrice()*amt,payedAmt);
             bank += payedAmt;
+            try{
             x.rmAmt(amt);
+            }catch(VendingMachineExceptions e){
+                successfulTransaction=false;
+                System.out.println(e.getMessage());
+            }
             profit+=payedAmt;
             return temp; 
             
     }
         /**
-     * This method decreases the quantity of drinks in storage
+     * This overload method decreases the quantity of drinks in storage
      * @param x the drink being purchased
      * @param payedAmt the money payed to VM
      * @param amt the amount of drinks being bought
      * @return returns the change due to the customer
      */
-    public Change sell(Drink x, double payedAmt, int amt) {
+    
+    public Change sell(Drink x, double payedAmt, int amt) throws ChangeExceptions {
             Change temp = new Change(0);
             temp=temp.findChange(x.getPrice()*amt,payedAmt);
             bank += payedAmt;
+            try{
             x.rmAmt(amt);
+            }catch(VendingMachineExceptions e){
+                successfulTransaction=false;
+                System.out.println(e.getMessage());
+            }
             profit+=payedAmt;
             return temp; 
             
@@ -127,19 +141,19 @@ bank+=money;
      * @param s this is the snacks being bought
      * @param amt the amount of snacks being bought
      */
-    public void buy(Snack s, int amt){
+    public void buy(Snack s, int amt) throws VendingMachineExceptions{
         bank-=(s.getPrice()-1)*amt;
         expenses+=(s.getPrice()-1)*amt;
         s.addAmt(amt);
     }
     
        /**
-     * This method updates the bank after buying drinks to fill the VM 
+     * This overload method updates the bank after buying drinks to fill the VM 
      * 
      * @param s this is the drinks being bought
      * @param amt the amount of drinks being bought
      */
-    public void buy(Drink s, int amt){
+    public void buy(Drink s, int amt) throws VendingMachineExceptions{
         bank-=(s.getPrice()-1)*amt;
         expenses+=(s.getPrice()-1)*amt;
         s.addAmt(amt);

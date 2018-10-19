@@ -12,9 +12,9 @@ package vendingmachine;
 public interface Products {
     public int getAmt();
     
-    public void addAmt(int add);
+    public void addAmt(int add)throws VendingMachineExceptions;
     
-    public void rmAmt(int rm);
+    public void rmAmt(int rm)throws VendingMachineExceptions;
     
     
     public String getName();

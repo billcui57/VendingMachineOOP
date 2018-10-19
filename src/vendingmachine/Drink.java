@@ -24,20 +24,20 @@ public class Drink extends Snack implements Products{
      * @param newVolume volume of the drink
      */
     public Drink(String newName, String newDes, Double newPrice, int newCalories, int newAmt, int newVolume) {
-        super(newName, newDes, newPrice, newAmt, newCalories);
+        super(newName, newDes, newPrice, newCalories, newAmt);
         volume = newVolume;
     }
     
     
     public Drink(){
         Drink temp = new Drink("", "", 0.0, 0, 0, 0);
-        temp.randomDrink();
+        temp=temp.randomDrink();
         name = temp.name;
         description = temp.description;
         price = temp.price;
         amt = temp.amt;
         calories = temp.calories;
-        
+       
     }
     
     
@@ -53,10 +53,10 @@ public class Drink extends Snack implements Products{
         Random ran = new Random();
         temp.name=drinkNames[ran.nextInt(drinkNames.length)];
         temp.description=drinkDescriptions[ran.nextInt(drinkDescriptions.length)];
-        temp.price=(double)ran.nextInt(20);
-        temp.calories=ran.nextInt(2000);
-        temp.amt=ran.nextInt(20);
-        
+        temp.price=(double)ran.nextInt(20)+1;
+        temp.calories=ran.nextInt(2000)+1;
+        temp.amt=20;
+         
         return temp;
     }
 

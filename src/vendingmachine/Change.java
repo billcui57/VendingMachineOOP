@@ -149,10 +149,14 @@ public class Change {
      * @param givenAmt amt of change given by user
      * @return temp
      */
-    public Change findChange(double totalAmt,double givenAmt){
+    public Change findChange(double totalAmt,double givenAmt) throws ChangeExceptions{
+        if(givenAmt<totalAmt){
+            throw new ChangeExceptions("Did not pay enough!");
+        }else{
         Change temp = new Change(0);
         temp = denominate(givenAmt-totalAmt);
         return temp;
+        }
     }
     
     

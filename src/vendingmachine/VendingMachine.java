@@ -17,6 +17,10 @@ public class VendingMachine {
    
     protected int numSnacks;
     protected int numDrinks;
+
+
+ 
+
     public boolean successfulTransaction=true;
     private int selectedSnck;
     private int selectedDrnk;

@@ -7,12 +7,10 @@ package vendingmachine;
 
 /**
  *
- * @author 348848128
+ * @author billc
  */
-public class VendingMachineExceptions extends Exception {
-    public VendingMachineExceptions(String message){
+public class ChangeExceptions extends Exception{
+    public ChangeExceptions(String message){
         super(message);
     }
-    
-    
 }

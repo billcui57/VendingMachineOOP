@@ -6,11 +6,17 @@
 package vendingmachine;
 
 /**
+ * This throws an exception when the vending machine has an issue with change
  *
- * @author billc
+ * @author Adi Venkatesh
  */
-public class ChangeExceptions extends Exception{
-    public ChangeExceptions(String message){
+public class ChangeExceptions extends Exception {
+
+    /**
+     *
+     * @param message the user receives when a problem is encountered
+     */
+    public ChangeExceptions(String message) {
         super(message);
     }
 }

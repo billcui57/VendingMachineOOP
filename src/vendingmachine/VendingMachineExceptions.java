@@ -6,13 +6,18 @@
 package vendingmachine;
 
 /**
+ * This throws an exception when the vending machine has an issue with snacks or
+ * drinks
  *
- * @author 348848128
+ * @author Bill Cui
  */
 public class VendingMachineExceptions extends Exception {
-    public VendingMachineExceptions(String message){
+
+    /**
+     * @param message the user receives when a problem is encountered
+     */
+    public VendingMachineExceptions(String message) {
         super(message);
     }
-    
-    
+
 }

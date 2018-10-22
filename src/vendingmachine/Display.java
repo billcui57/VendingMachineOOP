@@ -20,7 +20,11 @@ public class Display {
     DecimalFormat f = new DecimalFormat("#0.00");
 
 
-
+/**
+ * Display in order for users to use the vending machine, and to test the machine
+ * @param args for the main method
+ * @throws vendingmachine.ChangeExceptions
+ */
     public static void main(String[] args) throws ChangeExceptions {
         
         boolean loop;
@@ -156,14 +160,20 @@ public class Display {
 //    }
     
     
-    
+    /**
+     * List of all the snacks in the vending machine that are available
+     * @param machine instance of VendingMachine
+     */
     public static void listSnacks(VendingMachine machine) {
         System.out.println("Snack Index \t Snack Name \t Snack Description");
         for (int i = 0; i < machine.numSnacks; i++) {
             System.out.println((i + 1) + "\t\t" + machine.getSnack(i).getName() + "\t\t" + machine.getSnack(i).getDescription());
         }
     }
-    
+    /**
+     * Comment when a person buys a snack or drink in a certain calorie range, from healthy to unhealthy
+     * @param calories amt of calories
+     */
     public static void caloriesComment(double calories){
         if(calories<500){
             System.out.println("Healthy Snack!");
@@ -183,7 +193,10 @@ public class Display {
 //    }
 
     
-
+/**
+ * List of all the drinks in the vending machine that are available
+ * @param machine instance of VendingMachine
+ */
     public static void listDrinks(VendingMachine machine){
         System.out.println("Drink Index \t Drink Name \t Drink Description");
         for (int i = 0; i < machine.numDrinks; i++) {

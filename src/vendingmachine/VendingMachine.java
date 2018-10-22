@@ -178,7 +178,10 @@ public class VendingMachine {
         expenses+=(s.getPrice()-1)*amt;
         this.stock(s, amt);
     }
-            
+    /**
+     * Gets income that the vending machine brings in
+     * @return the result of the net income formula
+     */       
     public double getNetIncome(){
         return profits-expenses;
     }

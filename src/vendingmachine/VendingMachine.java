@@ -13,7 +13,7 @@ public class VendingMachine {
 
     private Snack[] snacks;
     private Drink[] drinks;
-    private int bank;
+    
    
     protected int numSnacks;
     protected int numDrinks;
@@ -24,9 +24,9 @@ public class VendingMachine {
     public boolean successfulTransaction=true;
     private int selectedSnck;
     private int selectedDrnk;
-    private double profit=0;
-    private double expenses;
-    Change c;
+    private double profits=0;
+    private double expenses=0;
+    Change bank;
     
 
     //constructor
@@ -40,8 +40,8 @@ public class VendingMachine {
     public VendingMachine(int newBankAmt, int numS, int numD) {
         numSnacks = numS;
         numDrinks = numD;
-        bank = newBankAmt;
-        c = new Change(bank);
+        
+        bank = new Change(newBankAmt);
         snacks = new Snack[numSnacks];
         drinks = new Drink[numDrinks];
 
@@ -72,12 +72,26 @@ public class VendingMachine {
         return drinks[index];
     }
 
+    
+    
+    public Change getBank(){
+        return bank;
+    }
+    
     /**
      * This method adds the VM money to the bank
      * @param money the value being added to bank
      */
-    public void stockBank(double money) {
-bank+=money;
+    public void stockBank(Change money) {
+        bank.add(money);
+    }
+    
+    public void stockBank(String type) throws ChangeExceptions {
+        bank.add(type);
+    }
+    
+    public void stockBank(String type, int amt) throws ChangeExceptions{
+        bank.add(type, amt);
     }
 /**
  * This method adds updated the stock in VM
@@ -106,14 +120,15 @@ bank+=money;
     public Change sell(Snack x, double payedAmt, int amt) throws ChangeExceptions {
             Change temp = new Change(0);
             temp=temp.findChange(x.getPrice()*amt,payedAmt);
-            bank += payedAmt;
+            bank.add(bank.denominate(payedAmt));
+            bank.remove(temp);
             try{
             x.rmAmt(amt);
             }catch(VendingMachineExceptions e){
                 successfulTransaction=false;
                 System.out.println(e.getMessage());
             }
-            profit+=payedAmt;
+            profits+=payedAmt;
             return temp; 
             
     }
@@ -128,14 +143,15 @@ bank+=money;
     public Change sell(Drink x, double payedAmt, int amt) throws ChangeExceptions {
             Change temp = new Change(0);
             temp=temp.findChange(x.getPrice()*amt,payedAmt);
-            bank += payedAmt;
+            bank.add(bank.denominate(payedAmt));
+            bank.remove(temp);
             try{
             x.rmAmt(amt);
             }catch(VendingMachineExceptions e){
                 successfulTransaction=false;
                 System.out.println(e.getMessage());
             }
-            profit+=payedAmt;
+            profits+=payedAmt;
             return temp; 
             
     }
@@ -146,9 +162,9 @@ bank+=money;
      * @param amt the amount of snacks being bought
      */
     public void buy(Snack s, int amt) throws VendingMachineExceptions{
-        bank-=(s.getPrice()-1)*amt;
+        bank.remove((s.getPrice()-1)*amt);
         expenses+=(s.getPrice()-1)*amt;
-        s.addAmt(amt);
+        this.stock(s, amt);
     }
     
        /**
@@ -158,11 +174,14 @@ bank+=money;
      * @param amt the amount of drinks being bought
      */
     public void buy(Drink s, int amt) throws VendingMachineExceptions{
-        bank-=(s.getPrice()-1)*amt;
+        bank.remove((s.getPrice()-1)*amt);
         expenses+=(s.getPrice()-1)*amt;
-        s.addAmt(amt);
+        this.stock(s, amt);
     }
             
+    public double getNetIncome(){
+        return profits-expenses;
+    }
     
 
 }

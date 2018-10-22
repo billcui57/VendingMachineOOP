@@ -32,6 +32,8 @@ public class Display {
             VendingMachine machine = new VendingMachine(1000, 7, 7);
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to Vendobot, want to buy a drink or snack?(d/s)");
+            System.out.println(machine.getBank());
+            System.out.println(machine.bank.getLoonies());
             loop=false;
             switch (input.next()) {
                 case "d":
@@ -48,6 +50,7 @@ public class Display {
                     change = machine.sell(machine.getDrink(index), paidAmt, amt);
                     if (machine.successfulTransaction) {
                         System.out.println("Your change is " + change.toString());
+                        caloriesComment(machine.getDrink(index).calories * amt);
                     } else {
                         System.out.println("Please try again!");
                         loop=true;
@@ -66,6 +69,7 @@ public class Display {
                    change = machine.sell(machine.getSnack(index), paidAmt, amt);
                     if (machine.successfulTransaction) {
                         System.out.println("Your change is " + change.toString());
+                        caloriesComment(machine.getSnack(index).calories * amt);
                     } else {
                         System.out.println("Please try again!");
                         loop=true;
@@ -75,8 +79,10 @@ public class Display {
                     loop = true;
                     break;
             }
+            System.out.println(machine.getBank());
+            System.out.println(machine.bank.getLoonies());
         } while (loop);
-
+        
     }
 
     
@@ -155,6 +161,16 @@ public class Display {
         System.out.println("Snack Index \t Snack Name \t Snack Description");
         for (int i = 0; i < machine.numSnacks; i++) {
             System.out.println((i + 1) + "\t\t" + machine.getSnack(i).getName() + "\t\t" + machine.getSnack(i).getDescription());
+        }
+    }
+    
+    public static void caloriesComment(double calories){
+        if(calories<500){
+            System.out.println("Healthy Snack!");
+        }else if((calories<1000)&&(calories>=500)){
+            System.out.println("Take it easy on the snacking!");
+        }else{
+            System.out.println("Don't get shot by a harpoon after that snack!");
         }
     }
     

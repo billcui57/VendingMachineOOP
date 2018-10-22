@@ -161,7 +161,7 @@ public class VendingMachine {
      * @param s this is the snacks being bought
      * @param amt the amount of snacks being bought
      */
-    public void buy(Snack s, int amt) throws VendingMachineExceptions{
+    public void buy(Snack s, int amt) throws VendingMachineExceptions, ChangeExceptions{
         bank.remove((s.getPrice()-1)*amt);
         expenses+=(s.getPrice()-1)*amt;
         this.stock(s, amt);
@@ -173,7 +173,7 @@ public class VendingMachine {
      * @param s this is the drinks being bought
      * @param amt the amount of drinks being bought
      */
-    public void buy(Drink s, int amt) throws VendingMachineExceptions{
+    public void buy(Drink s, int amt) throws VendingMachineExceptions, ChangeExceptions{
         bank.remove((s.getPrice()-1)*amt);
         expenses+=(s.getPrice()-1)*amt;
         this.stock(s, amt);

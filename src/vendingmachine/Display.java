@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Adi Venkatesh
+ * @author Adi Venkatesh and Bill Cui
  */
 public class Display {
 

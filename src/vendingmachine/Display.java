@@ -17,30 +17,28 @@ import java.util.Scanner;
  */
 public class Display {
 
-    DecimalFormat f = new DecimalFormat("#0.00");
-
-
-/**
- * @author Bill Cui
- * Display in order for users to use the vending machine, and to test the machine
- * @param args for the main method
- * @throws vendingmachine.ChangeExceptions
- */
+    /**
+     * Display in order for users to use the vending machine, and to test the
+     * machine
+     *
+     * @param args for the main method
+     * @throws vendingmachine.ChangeExceptions
+     */
     public static void main(String[] args) throws ChangeExceptions {
-        
+
         boolean loop;
         int index;
         int amt;
         double paidAmt;
         Change change;
         do {
-            //set maximum number of snacks and drinks to 7, if want more then use API to add
+            DecimalFormat money = new DecimalFormat("$0.00");
             VendingMachine machine = new VendingMachine(1000, 7, 7);
-        Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to Vendobot, want to buy a drink or snack?(d/s)");
-            
-            loop=false;
-            //two modes, drink and snack (i dont know how to make it more efficient as they are using different methods)
+            Scanner input = new Scanner(System.in);
+            System.out.println("Welcome to Vendobot, want to buy a drink or snack?(d/s)");
+            System.out.println(machine.getBank());
+            System.out.println(machine.bank.getLoonies());
+            loop = false;
             switch (input.next()) {
                 case "d":
                     //lists all the drinks
@@ -48,12 +46,12 @@ public class Display {
                     System.out.println("Enter in drink index to purchase");
                     //selects drink with entered index
                     index = input.nextInt() - 1;
-                     System.out.println("Selected " + machine.getDrink(index).name
-                            + "\nPrice is $" + machine.getDrink(index).price
+                    double drinkPrint = machine.getDrink(index).price;
+                    System.out.println("Selected " + machine.getDrink(index).name
+                            + "\nPrice is " + money.format(drinkPrint)
                             + "\nHow many would you like to buy?");
-                     amt = input.nextInt();
-                    System.out.println("Your total is $" + (machine.getDrink(index).price * amt) +"\nPlease pay" );
-                    //user pays and change is found
+                    amt = input.nextInt();
+                    System.out.println("Your total is " + money.format(drinkPrint * amt) + "\nPlease pay");
                     paidAmt = input.nextDouble();
                     change = machine.sell(machine.getDrink(index), paidAmt, amt);
                     if (machine.successfulTransaction) {
@@ -61,26 +59,27 @@ public class Display {
                         caloriesComment(machine.getDrink(index).calories * amt);
                     } else {
                         System.out.println("Please try again!");
-                        loop=true;
+                        loop = true;
                     }
                     break;
                 case "s":
                     listSnacks(machine);
                     System.out.println("Enter in snack index to purchase");
                     index = input.nextInt() - 1;
+                    double snackPrint = machine.getSnack(index).price;
                     System.out.println("Selected " + machine.getSnack(index).name
-                            + "\nPrice is $" + machine.getSnack(index).price
+                            + "\nPrice is " + money.format(snackPrint)
                             + "\nHow many would you like to buy?");
                     amt = input.nextInt();
-                    System.out.println("Your total is $" + (machine.getSnack(index).price * amt) +"\nPlease pay");
+                    System.out.println("Your total is " + money.format(snackPrint * amt) + "\nPlease pay");
                     paidAmt = input.nextDouble();
-                   change = machine.sell(machine.getSnack(index), paidAmt, amt);
+                    change = machine.sell(machine.getSnack(index), paidAmt, amt);
                     if (machine.successfulTransaction) {
                         System.out.println("Your change is " + change.toString());
                         caloriesComment(machine.getSnack(index).calories * amt);
                     } else {
                         System.out.println("Please try again!");
-                        loop=true;
+                        loop = true;
                     }
                     break;
                 default:
@@ -89,10 +88,9 @@ public class Display {
             }
             
         } while (loop);
-        
+
     }
 
-    
 //    public static void main(String[] args) {
 //        VendingMachine machine = new VendingMachine(1000,7,7);
 //        Scanner input = new Scanner(System.in);
@@ -101,8 +99,6 @@ public class Display {
 //        
 //        int choice = input.nextInt();
 //       
-        
-        
 //        switch (choice) {
 //            case 1:
 //                {
@@ -138,14 +134,6 @@ public class Display {
 //                choice = input.nextInt();
 //                break;
 //        } 
-
-
-   
-    
-  
-  
-
-
 //    public static void CashorCoins(Scanner i){
 //        boolean cycle;
 //        
@@ -161,11 +149,10 @@ public class Display {
 //            }
 //        }while(cycle==true);
 //    }
-    
-    
     /**
      * @author Adi Venkatisgh
      * List of all the snacks in the vending machine that are available
+     *
      * @param machine instance of VendingMachine
      */
     public static void listSnacks(VendingMachine machine) {
@@ -175,22 +162,22 @@ public class Display {
             System.out.println((i + 1) + "\t\t" + machine.getSnack(i).getName() + "\t\t" + machine.getSnack(i).getDescription());
         }
     }
+
     /**
-     * @author Bill Cui
-     * Comment when a person buys a snack or drink in a certain calorie range, from healthy to unhealthy
+     * Comment when a person buys a snack or drink in a certain calorie range,
+     * from healthy to unhealthy
+     *
      * @param calories amt of calories
      */
-    public static void caloriesComment(double calories){
-        //comments on the calories sold
-        if(calories<500){
+    public static void caloriesComment(double calories) {
+        if (calories < 500) {
             System.out.println("Healthy Snack!");
-        }else if((calories<1000)&&(calories>=500)){
+        } else if ((calories < 1000) && (calories >= 500)) {
             System.out.println("Take it easy on the snacking!");
-        }else{
+        } else {
             System.out.println("Don't get shot by a harpoon after that snack!");
         }
     }
-    
 
 //    public static void listDrinks(VendingMachine machine){
 //        System.out.println("Drink Index \t Drink Name \t Drink Description");
@@ -198,15 +185,12 @@ public class Display {
 //            System.out.println((i+1) + "\t\t" + machine.getDrink(i).getName() + "\t\t" + machine.getDrink(i).getDescription());
 //        }
 //    }
-
-    
-/**
- * @author Bill Cui
- * List of all the drinks in the vending machine that are available
- * @param machine instance of VendingMachine
- */
-    public static void listDrinks(VendingMachine machine){
-        //lists all the drinks
+    /**
+     * List of all the drinks in the vending machine that are available
+     *
+     * @param machine instance of VendingMachine
+     */
+    public static void listDrinks(VendingMachine machine) {
         System.out.println("Drink Index \t Drink Name \t Drink Description");
         for (int i = 0; i < machine.numDrinks; i++) {
             System.out.println((i + 1) + "\t\t" + machine.getDrink(i).getName() + "\t\t" + machine.getDrink(i).getDescription());

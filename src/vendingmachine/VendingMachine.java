@@ -7,7 +7,7 @@ package vendingmachine;
 
 /**
  *
- * @author Fiona Whitfield
+ * @author Fiona Whitfield, Bill Cui
  */
 public class VendingMachine {
 
@@ -65,6 +65,7 @@ public class VendingMachine {
      * This method returns the drink being chosen for purchase
      * @param index the position of the drink in the array
      * @return the name of drink being purchased
+     * @author Bill Cui
      */
     public Drink getDrink(int index) {
         return drinks[index];
@@ -82,6 +83,7 @@ public class VendingMachine {
     /**
      * This method adds money to the bank
      * @param money the value being added to bank
+     * @author Bill Cui
      */
     public void stockBank(Change money) {
         bank.add(money);
@@ -90,6 +92,7 @@ public class VendingMachine {
     /**
      * Add 1 of money type to bank
      * @param type coin type
+     * @author Bill Cui
      * @throws ChangeExceptions for removing too much
      */
     public void stockBank(String type) throws ChangeExceptions {
@@ -107,6 +110,7 @@ public class VendingMachine {
     }
 /**
  * This method adds updated the stock in VM
+ * @author Bill Cui
  * @param s the specific snack being added to VM
  * @param qty the amount of the snack being added to VM
  */
@@ -116,6 +120,7 @@ public class VendingMachine {
     
     /**
  * This overload method adds the updated stock in VM
+ * @author Bill Cui
  * @param s the specific drink being added to VM
  * @param qty the amount of the drink being added to VM
  */
@@ -154,6 +159,7 @@ public class VendingMachine {
      * This overload method decreases the quantity of drinks in storage
      * @param x the drink being purchased
      * @param payedAmt the money payed to VM
+     * @author Bill Cui
      * @param amt the amount of drinks being bought
      * @return returns the change due to the customer
      */
@@ -177,7 +183,7 @@ public class VendingMachine {
     }
     /**
      * This method updates the bank after buying snacks to fill the VM 
-     * 
+     * @author Bill Cui
      * @param s this is the snacks being bought
      * @param amt the amount of snacks being bought
      */
@@ -201,6 +207,7 @@ public class VendingMachine {
     }
     /**
      * Gets income that the vending machine brings in
+     * @author Bill Cui
      * @return the result of the net income formula
      */       
     public double getNetIncome(){

@@ -16,7 +16,7 @@ public class Drink extends Snack implements Products {
     private int volume;
 
     /**
-     *
+     * Constructor for specified drink
      * @param newName name of the drink
      * @param newDes description of the drink
      * @param newPrice price of the drink
@@ -29,10 +29,16 @@ public class Drink extends Snack implements Products {
         volume = newVolume;
     }
 
-    //new random drink
-    public Drink() {
+    /**
+     * 
+     * Creates a random drink
+     * @param i
+     */
+    public Drink(int i) {
+        //new random drink
         Drink temp = new Drink("", "", 0.0, 0, 0, 0);
-        temp = temp.randomDrink();
+        //creates a random drink with random attributes
+        temp = temp.randomDrink(i);
         name = temp.name;
         description = temp.description;
         price = temp.price;
@@ -44,10 +50,11 @@ public class Drink extends Snack implements Products {
     /**
      * Creating random values for the variety names, descriptions, etc.
      *
-     * @return temp, temporary variable to store values
+     * @return temp, temporary drink variable to store values
      */
-    public Drink randomDrink() {
+    public Drink randomDrink(int index) {
         Drink temp = new Drink("", "", 0.0, 0, 0, 0);
+        //selects from an array of names and descriptions to create random attributes 
         String drinkNames[] = {"Coca Cola", "Sprite", "Nestea", "Canada Dry", "Mug", "Fanta",
             "Diet Coca Cola", "Diet Sprite", "Diet Nestea", "Diet Canada Dry", "Diet Mug",
             "Diet Fanta"};
@@ -56,7 +63,7 @@ public class Drink extends Snack implements Products {
             "tastes like lemon", "tastes like tea", "tastes like ginger", "tastes like toothpaste",
             "tastes like orange"};
         Random ran = new Random();
-        temp.name = drinkNames[ran.nextInt(drinkNames.length)];
+        temp.name = drinkNames[index];
         temp.description = drinkDescriptions[ran.nextInt(drinkDescriptions.length)];
         temp.price = (double) ran.nextInt(20) + 1;
         temp.calories = ran.nextInt(2000) + 1;

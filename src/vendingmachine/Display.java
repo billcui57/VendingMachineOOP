@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Adi Venkatesh
+ * @author Adi Venkatesh & Bill Cui
  */
 public class Display {
 
@@ -45,8 +45,10 @@ public class Display {
             switch (input.next()) {
                 // in the case that they want a drink
                 case "d":
+                    //lists all the drinks
                     listDrinks(machine);
                     System.out.println("Enter in drink index to purchase");
+                    //selects drink with entered index
                     index = input.nextInt() - 1;
                     double drinkPrint = machine.getDrink(index).price;
                     //prints out the name, price formatted into dollar amount to two decimal places
@@ -161,11 +163,13 @@ public class Display {
 //        }while(cycle==true);
 //    }
     /**
+     * @author Adi Venkatisgh
      * List of all the snacks in the vending machine that are available
      *
      * @param machine instance of VendingMachine
      */
     public static void listSnacks(VendingMachine machine) {
+        //lists all the snacks
         System.out.println("Snack Index \t Snack Name \t Snack Description");
         for (int i = 0; i < machine.numSnacks; i++) {
             System.out.println((i + 1) + "\t\t" + machine.getSnack(i).getName() + "\t\t" + machine.getSnack(i).getDescription());

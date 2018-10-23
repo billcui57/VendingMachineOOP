@@ -32,27 +32,35 @@ public class Display {
         double paidAmt;
         Change change;
         do {
+            //Formats the money into readable format
             DecimalFormat money = new DecimalFormat("$0.00");
+            //creates an instance of vending machine
             VendingMachine machine = new VendingMachine(1000, 7, 7);
+            //Initial prompts for user, asking whether they want a drink or a snack
             Scanner input = new Scanner(System.in);
             System.out.println("Welcome to Vendobot, want to buy a drink or snack?(d/s)");
             System.out.println(machine.getBank());
             System.out.println(machine.bank.getLoonies());
             loop = false;
             switch (input.next()) {
+                // in the case that they want a drink
                 case "d":
                     listDrinks(machine);
                     System.out.println("Enter in drink index to purchase");
                     index = input.nextInt() - 1;
                     double drinkPrint = machine.getDrink(index).price;
+                    //prints out the name, price formatted into dollar amount to two decimal places
                     System.out.println("Selected " + machine.getDrink(index).name
                             + "\nPrice is " + money.format(drinkPrint)
                             + "\nHow many would you like to buy?");
                     amt = input.nextInt();
+                    //prints out the total, formatted into dollar amount to two decimal places
                     System.out.println("Your total is " + money.format(drinkPrint * amt) + "\nPlease pay");
                     paidAmt = input.nextDouble();
+                    //accounting for change
                     change = machine.sell(machine.getDrink(index), paidAmt, amt);
                     if (machine.successfulTransaction) {
+                        //if enough money is given, return change and leave calorie comment
                         System.out.println("Your change is " + change.toString());
                         caloriesComment(machine.getDrink(index).calories * amt);
                     } else {
@@ -60,19 +68,24 @@ public class Display {
                         loop = true;
                     }
                     break;
+                //In the case that they want a snack
                 case "s":
                     listSnacks(machine);
                     System.out.println("Enter in snack index to purchase");
                     index = input.nextInt() - 1;
                     double snackPrint = machine.getSnack(index).price;
+                    //prints out the name, price formatted into dollar amount to two decimal places
                     System.out.println("Selected " + machine.getSnack(index).name
                             + "\nPrice is " + money.format(snackPrint)
                             + "\nHow many would you like to buy?");
                     amt = input.nextInt();
+                    //prints out the total, formatted into dollar amount to two decimal places
                     System.out.println("Your total is " + money.format(snackPrint * amt) + "\nPlease pay");
                     paidAmt = input.nextDouble();
+                    //accounting for change
                     change = machine.sell(machine.getSnack(index), paidAmt, amt);
                     if (machine.successfulTransaction) {
+                        //if enough money is given, return change and leave calorie comment
                         System.out.println("Your change is " + change.toString());
                         caloriesComment(machine.getSnack(index).calories * amt);
                     } else {
@@ -84,8 +97,7 @@ public class Display {
                     loop = true;
                     break;
             }
-            System.out.println(machine.getBank());
-            System.out.println(machine.bank.getLoonies());
+            
         } while (loop);
 
     }

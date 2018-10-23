@@ -7,7 +7,7 @@ package vendingmachine;
 
 /**
  *
- * @author Bill Cui
+ * @author Bill Cui, Fiona Whitfield
  */
 public class Change {
 
@@ -39,6 +39,7 @@ public class Change {
     /**
      * Getter for Toonies
      *
+     * @author Fiona Whitfield
      * @return amount of toonies
      */
     public int getToonies() {
@@ -48,6 +49,7 @@ public class Change {
     /**
      * Getter for Loonies
      *
+     * @author Fiona Whitfield
      * @return amount of loonies
      */
     public int getLoonies() {
@@ -57,6 +59,7 @@ public class Change {
     /**
      * Getter for Quarters
      *
+     * @author Fiona Whitfield
      * @return amount of quarters
      */
     public int getQuarters() {
@@ -66,6 +69,7 @@ public class Change {
     /**
      * Getter for Dimes
      *
+     * @author Fiona Whitfield
      * @return amount of dimes
      */
     public int getDimes() {
@@ -75,6 +79,7 @@ public class Change {
     /**
      * Getter for Nickels
      *
+     * @author Fiona Whitfield
      * @return amount of nickels
      */
     public int getNickels() {
@@ -84,6 +89,7 @@ public class Change {
     /**
      * Turns the amount of coins into actual monetary values
      *
+     * @author Fiona Whitfield
      * @return a double of the sum of the amount of coins multiplied by their
      * monetary value
      */
@@ -94,6 +100,7 @@ public class Change {
     /**
      * Adds change
      *
+     * @author Fiona Whitfield
      * @param amt amt of coin
      * @param type coin type
      * @throws vendingmachine.ChangeExceptions
@@ -141,6 +148,7 @@ public class Change {
     /**
      * Adds change
      *
+     * @author Bill Cui
      * @param type coin type
      * @throws vendingmachine.ChangeExceptions
      */
@@ -151,6 +159,7 @@ public class Change {
     /**
      * Adds change
      *
+     * @author Bill Cui
      * @param amt amt of coin
      */
     public void add(Change amt) {
@@ -164,6 +173,7 @@ public class Change {
     /**
      * Turns the amount of coins into actual monetary values
      *
+     * @author Bill Cui
      * @return a double of the sum of the amount of coins multiplied by their
      * monetary value
      */
@@ -174,6 +184,7 @@ public class Change {
     /**
      * Remove change
      *
+     * @author Bill Cui
      * @param type coin type
      * @param amt amt of coin
      * @throws vendingmachine.ChangeExceptions
@@ -185,6 +196,7 @@ public class Change {
     /**
      * Remove change
      *
+     * @author Bill Cui
      * @param amt amt of coin
      * @throws vendingmachine.ChangeExceptions
      */
@@ -197,6 +209,7 @@ public class Change {
     /**
      * Remove change
      *
+     * @author Bill Cui
      * @param amt amt of coin
      * @throws vendingmachine.ChangeExceptions
      */
@@ -225,6 +238,7 @@ public class Change {
     /**
      * Converts the change into a string so it is readable
      *
+     * @author Fiona Whitfield
      * @return change value as a string so it can be shown to the user
      */
     public String toString() {
@@ -248,6 +262,7 @@ public class Change {
     /**
      * Denominates change
      *
+     * @author Fiona Whitfield
      * @param amt amt of coin
      * @return temp temporary variable for storing values
      */
@@ -268,6 +283,7 @@ public class Change {
     /**
      * Finds Change, given vs. total amt of change
      *
+     * @author Bill Cui
      * @param totalAmt the total amount of change
      * @param givenAmt amt of change given by user
      * @throws vendingmachine.ChangeExceptions

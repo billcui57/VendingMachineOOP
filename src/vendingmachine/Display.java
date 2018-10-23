@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Adi Venkatesh
+ * @author Adi Venkatesh & Bill Cui
  */
 public class Display {
 
@@ -21,6 +21,7 @@ public class Display {
 
 
 /**
+ * @author Bill Cui
  * Display in order for users to use the vending machine, and to test the machine
  * @param args for the main method
  * @throws vendingmachine.ChangeExceptions
@@ -33,23 +34,26 @@ public class Display {
         double paidAmt;
         Change change;
         do {
+            //set maximum number of snacks and drinks to 7, if want more then use API to add
             VendingMachine machine = new VendingMachine(1000, 7, 7);
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to Vendobot, want to buy a drink or snack?(d/s)");
-            System.out.println(machine.getBank());
-            System.out.println(machine.bank.getLoonies());
+            
             loop=false;
+            //two modes, drink and snack (i dont know how to make it more efficient as they are using different methods)
             switch (input.next()) {
                 case "d":
+                    //lists all the drinks
                     listDrinks(machine);
                     System.out.println("Enter in drink index to purchase");
+                    //selects drink with entered index
                     index = input.nextInt() - 1;
                      System.out.println("Selected " + machine.getDrink(index).name
                             + "\nPrice is $" + machine.getDrink(index).price
                             + "\nHow many would you like to buy?");
                      amt = input.nextInt();
                     System.out.println("Your total is $" + (machine.getDrink(index).price * amt) +"\nPlease pay" );
-                   
+                    //user pays and change is found
                     paidAmt = input.nextDouble();
                     change = machine.sell(machine.getDrink(index), paidAmt, amt);
                     if (machine.successfulTransaction) {
@@ -83,8 +87,7 @@ public class Display {
                     loop = true;
                     break;
             }
-            System.out.println(machine.getBank());
-            System.out.println(machine.bank.getLoonies());
+            
         } while (loop);
         
     }
@@ -161,20 +164,24 @@ public class Display {
     
     
     /**
+     * @author Adi Venkatisgh
      * List of all the snacks in the vending machine that are available
      * @param machine instance of VendingMachine
      */
     public static void listSnacks(VendingMachine machine) {
+        //lists all the snacks
         System.out.println("Snack Index \t Snack Name \t Snack Description");
         for (int i = 0; i < machine.numSnacks; i++) {
             System.out.println((i + 1) + "\t\t" + machine.getSnack(i).getName() + "\t\t" + machine.getSnack(i).getDescription());
         }
     }
     /**
+     * @author Bill Cui
      * Comment when a person buys a snack or drink in a certain calorie range, from healthy to unhealthy
      * @param calories amt of calories
      */
     public static void caloriesComment(double calories){
+        //comments on the calories sold
         if(calories<500){
             System.out.println("Healthy Snack!");
         }else if((calories<1000)&&(calories>=500)){
@@ -194,10 +201,12 @@ public class Display {
 
     
 /**
+ * @author Bill Cui
  * List of all the drinks in the vending machine that are available
  * @param machine instance of VendingMachine
  */
     public static void listDrinks(VendingMachine machine){
+        //lists all the drinks
         System.out.println("Drink Index \t Drink Name \t Drink Description");
         for (int i = 0; i < machine.numDrinks; i++) {
             System.out.println((i + 1) + "\t\t" + machine.getDrink(i).getName() + "\t\t" + machine.getDrink(i).getDescription());

@@ -139,7 +139,7 @@ public class Change {
     }
 
     /**
-     * Adds change
+     * Adds 1 of 1 coin type 
      *
      * @param type coin type
      * @throws vendingmachine.ChangeExceptions
@@ -149,11 +149,12 @@ public class Change {
     }
 
     /**
-     * Adds change
+     * Adds amt to coin type
      *
      * @param amt amt of coin
      */
     public void add(Change amt) {
+        
         toonies += amt.toonies;
         loonies += amt.loonies;
         quarters += amt.quarters;
@@ -161,47 +162,41 @@ public class Change {
         nickels += amt.nickels;
     }
 
-    /**
-     * Turns the amount of coins into actual monetary values
-     *
-     * @return a double of the sum of the amount of coins multiplied by their
-     * monetary value
-     */
-    public double getAmt() {
-        return toonies * 2 + loonies * 1 + quarters * 0.25 + dimes * 0.1 + nickels * 0.05;
-    }
+    
 
     /**
-     * Remove change
+     * Remove change from set coin type and amt
      *
      * @param type coin type
      * @param amt amt of coin
-     * @throws vendingmachine.ChangeExceptions
+     * @throws vendingmachine.ChangeExceptions prevents having negative number of coins
      */
     public void remove(String type, int amt) throws ChangeExceptions {
+        //inverse of add method
         add(type, amt * -1);
     }
 
     /**
-     * Remove change
+     * Remove change from double
      *
      * @param amt amt of coin
-     * @throws vendingmachine.ChangeExceptions
+     * @throws vendingmachine.ChangeExceptions prevents having negative number of coins
      */
     public void remove(double amt) throws ChangeExceptions {
+        //denominates double and subtracts
         Change temp = new Change(0);
         temp = denominate(amt);
         this.remove(temp);
     }
 
     /**
-     * Remove change
+     * Remove change from change
      *
      * @param amt amt of coin
      * @throws vendingmachine.ChangeExceptions
      */
     public void remove(Change amt) throws ChangeExceptions {
-
+        //prevents removing too much
         if (toonies - amt.toonies < 0) {
             throw new ChangeExceptions("Not enough toonies!");
         } else if (loonies - amt.loonies < 0) {
@@ -235,9 +230,10 @@ public class Change {
     }
 
     /**
-     * Stores the amount of each coin if the machine is empty
+     * Empty vending machine bank
      */
     public void empty() {
+        //sets all to 0
         toonies = 0;
         loonies = 0;
         quarters = 0;
@@ -252,6 +248,7 @@ public class Change {
      * @return temp temporary variable for storing values
      */
     public Change denominate(double amt) {
+        //denominates change
         Change temp = new Change(0);
         temp.toonies = (int) (amt / 2);
         amt = amt % 2;
@@ -274,12 +271,14 @@ public class Change {
      * @return temp temporary variable for storing values
      */
     public Change findChange(double totalAmt, double givenAmt) throws ChangeExceptions {
-
+        //error handling for entering not enough
         if (givenAmt < totalAmt) {
             throw new ChangeExceptions("Did not pay enough!");
         } else {
+            //finds change
             Change temp = new Change(0);
             temp = denominate(givenAmt - totalAmt);
+            
             return temp;
         }
     }

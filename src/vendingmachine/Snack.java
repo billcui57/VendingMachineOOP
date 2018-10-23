@@ -20,6 +20,7 @@ class Snack implements Products {
     protected int amt;
 
     /**
+     * Constructor for set snack 
      * @author Bill Cui
      * @param newName name of the snack
      * @param newDes description of the snack
@@ -35,12 +36,14 @@ class Snack implements Products {
         calories = newCalories;
     }
 
-    /**
-     * @author Bill Cui new random snack
+    /**new random snack
+     * Constructor for random snack
+     * @author Bill Cui 
      */
-    public Snack() {
+    public Snack(int i) {
+        //creates a random temp snack and pastes it to new snack
         Snack temp = new Snack("", "", 0, 0, 0);
-        temp = temp.randomSnack();
+        temp = temp.randomSnack(i);
         name = temp.name;
         description = temp.description;
         price = temp.price;
@@ -48,20 +51,25 @@ class Snack implements Products {
         calories = temp.calories;
 
     }
+    
+    public Snack(){
+        
+    }
 
     /**
      * Creating random values for the variety names, descriptions, etc.
-     *
+     *@author Bill Cui
      * @return temp, temporary variable to store values
      */
-    public Snack randomSnack() {
+    public Snack randomSnack(int index) {
 
+        //Creates a random snack with random attributes
         Snack temp = new Snack("", "", 0, 0, 0);
         String[] snackNames = {"Mars", "Snickers", "O'Henry", "Aero", "Clif", "Cheetos", "Lay's", "Doritos",
             "Cheetos", "Quakers"};
         String[] snackDescriptions = {"Crunchy", "Chewy", "Sweet", "Yummy", "Yucky", "Cool"};
         Random ran = new Random();
-        temp.name = snackNames[ran.nextInt(snackNames.length)];
+        temp.name = snackNames[index];
         temp.description = snackDescriptions[ran.nextInt(snackDescriptions.length)];
         temp.price = (double) ran.nextInt(20) + 1;
         temp.calories = ran.nextInt(2000) + 1;
@@ -72,7 +80,7 @@ class Snack implements Products {
 
     /**
      * Setter for newName
-     *
+     * 
      * @param newName the name to set
      * @author Adi Venkatesh
      */
@@ -111,11 +119,12 @@ class Snack implements Products {
     }
 
     /**
+     * Adds amount of that snack with error handling
      * @author Bill Cui
      * @param add amount you are adding
      * @throws vendingmachine.VendingMachineExceptions
      */
-    @Override
+   
     public void addAmt(int add) throws VendingMachineExceptions {
         if ((amt + add) > 100) {
             throw new VendingMachineExceptions("Overstocked on " + name + "!");
@@ -125,11 +134,12 @@ class Snack implements Products {
     }
 
     /**
+     * Removes amount of that snack
      * @author Bill Cui
      * @param rm amount you are removing
      * @throws vendingmachine.VendingMachineExceptions
      */
-    @Override
+  
     public void rmAmt(int rm) throws VendingMachineExceptions {
         if (amt - rm < 0) {
             throw new VendingMachineExceptions("Not enough of " + name + " in stock!");

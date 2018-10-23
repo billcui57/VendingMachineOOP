@@ -22,8 +22,6 @@ public class VendingMachine {
  
 
     public boolean successfulTransaction=true;
-    private int selectedSnck;
-    private int selectedDrnk;
     private double profits=0;
     private double expenses=0;
     Change bank;
@@ -47,8 +45,8 @@ public class VendingMachine {
 
         //initialze snacks in VM
         for (int i = 0; i < numSnacks; i++) {
-            snacks[i] = new Snack();
-            drinks[i] = new Drink();
+            snacks[i] = new Snack(i);
+            drinks[i] = new Drink(i);
             
         }
         
@@ -73,23 +71,37 @@ public class VendingMachine {
     }
 
     
-    
+    /**
+     * Gets bank amt
+     * @return bank 
+     */
     public Change getBank(){
         return bank;
     }
     
     /**
-     * This method adds the VM money to the bank
+     * This method adds money to the bank
      * @param money the value being added to bank
      */
     public void stockBank(Change money) {
         bank.add(money);
     }
     
+    /**
+     * Add 1 of money type to bank
+     * @param type coin type
+     * @throws ChangeExceptions for removing too much
+     */
     public void stockBank(String type) throws ChangeExceptions {
         bank.add(type);
     }
     
+    /**
+     * Add any amt of money type to bank
+     * @param type coin type
+     * @param amt amt of coin
+     * @throws ChangeExceptions for removing too much 
+     */
     public void stockBank(String type, int amt) throws ChangeExceptions{
         bank.add(type, amt);
     }
@@ -111,7 +123,7 @@ public class VendingMachine {
         s.addAmt(qty);
     }
     /**
-     * This method decreases the quantity of snacks in storage
+     * This method decreases the quantity of snacks in storage through selling it
      * @param x the snack being purchased
      * @param payedAmt the money payed to VM
      * @param amt the amount of snack being bought
@@ -119,16 +131,22 @@ public class VendingMachine {
      */
     public Change sell(Snack x, double payedAmt, int amt) throws ChangeExceptions {
             Change temp = new Change(0);
+            //finds change due
             temp=temp.findChange(x.getPrice()*amt,payedAmt);
+            //adds given amt to bank
             bank.add(bank.denominate(payedAmt));
+            //removes change due from bank (can throw change exception from removing coin type that is already at amt 0)
             bank.remove(temp);
+            
+            //removes stock with error handling (prevents removing already empty snack)
             try{
             x.rmAmt(amt);
             }catch(VendingMachineExceptions e){
                 successfulTransaction=false;
                 System.out.println(e.getMessage());
             }
-            profits+=payedAmt;
+            //adds to profit
+            profits+=(payedAmt-temp.toDouble());
             return temp; 
             
     }
@@ -144,14 +162,16 @@ public class VendingMachine {
             Change temp = new Change(0);
             temp=temp.findChange(x.getPrice()*amt,payedAmt);
             bank.add(bank.denominate(payedAmt));
+            //same commenting as overloaded method
             bank.remove(temp);
+            
             try{
             x.rmAmt(amt);
             }catch(VendingMachineExceptions e){
                 successfulTransaction=false;
                 System.out.println(e.getMessage());
             }
-            profits+=payedAmt;
+            profits+=(payedAmt-temp.toDouble());
             return temp; 
             
     }
@@ -162,6 +182,7 @@ public class VendingMachine {
      * @param amt the amount of snacks being bought
      */
     public void buy(Snack s, int amt) throws VendingMachineExceptions, ChangeExceptions{
+        //removes money from bank and adds to expenses
         bank.remove((s.getPrice()-1)*amt);
         expenses+=(s.getPrice()-1)*amt;
         this.stock(s, amt);
@@ -183,6 +204,7 @@ public class VendingMachine {
      * @return the result of the net income formula
      */       
     public double getNetIncome(){
+        //returns the net income
         return profits-expenses;
     }
     

@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Adi Venkatesh & Bill Cui
+ * @author Adi Venkatesh
  */
 public class Display {
 
@@ -163,7 +163,7 @@ public class Display {
 //        }while(cycle==true);
 //    }
     /**
-     * @author Adi Venkatisgh
+     * @author Adi Venkatesh
      * List of all the snacks in the vending machine that are available
      *
      * @param machine instance of VendingMachine
